@@ -1,7 +1,9 @@
 import React from 'react';
 
-export default () => {
+export default (props) => {
   return (
-    <li />
+    <li>
+      <div>{props.accountNumber}</div>
+    </li>
   );
 };

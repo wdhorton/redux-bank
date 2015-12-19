@@ -29,10 +29,10 @@ describe("components", () => {
 
     it("displays the account number passed as props", () => {
       const { output, props } = setup();
-
       const div = output.props.children;
 
-      expect(div.innerHTML).toBe(props.accountNumber);
+      expect(div.type).toBe('div');
+      expect(div.props.children).toBe(props.accountNumber);
     });
 
   });
