@@ -6,7 +6,8 @@ import AccountListItem from '../../components/AccountListItem.js';
 function setup() {
   const props = {
     accountNumber: "123456789",
-    accountType: "Checking"
+    accountType: "Checking",
+    amount: 1000.00
   };
 
   const renderer = TestUtils.createRenderer();
@@ -42,6 +43,14 @@ describe("components", () => {
 
       expect(div.type).toBe('div');
       expect(div.props.children).toBe(props.accountType);
+    });
+
+    it("displays the account type", () => {
+      const { output, props } = setup();
+      const div = output.props.children[2];
+
+      expect(div.type).toBe('div');
+      expect(div.props.children).toBe(props.amount);
     });
 
   });
