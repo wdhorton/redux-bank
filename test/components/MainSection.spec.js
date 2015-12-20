@@ -21,5 +21,14 @@ describe("components", () => {
 
       expect(output.type).toBe('section');
     });
+
+    it ("renders an 'Accounts' header", () => {
+      const { output } = setup();
+      const h2 = output.props.children;
+      const text = h2.props.children;
+
+      expect(h2.type).toBe('h2');
+      expect(text).toBe('Accounts');
+    });
   });
 });

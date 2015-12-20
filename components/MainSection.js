@@ -2,6 +2,8 @@ import React from 'react';
 
 export default () => {
   return (
-    <section />
+    <section>
+      <h2>Accounts</h2>
+    </section>
   );
 };
