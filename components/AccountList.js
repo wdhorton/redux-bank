@@ -2,9 +2,11 @@ import React from 'react';
 import AccountListItem from './AccountListItem';
 
 export default (props) => {
+  const accounts = props.accounts || [];
+
   return (
     <ul>
-      {props.accounts.map((account) => {
+      {accounts.map((account) => {
         return <AccountListItem account={account} />;
       })}
     </ul>
