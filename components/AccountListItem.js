@@ -5,6 +5,7 @@ export default (props) => {
     <li>
       <div>{props.accountNumber}</div>
       <div>{props.accountType}</div>
+      <div>{props.amount}</div>
     </li>
   );
 };

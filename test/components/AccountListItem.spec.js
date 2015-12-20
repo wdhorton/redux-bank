@@ -45,7 +45,7 @@ describe("components", () => {
       expect(div.props.children).toBe(props.accountType);
     });
 
-    it("displays the account type", () => {
+    it("displays the account amount", () => {
       const { output, props } = setup();
       const div = output.props.children[2];
 
