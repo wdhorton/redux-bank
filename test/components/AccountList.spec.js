@@ -2,6 +2,7 @@ import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import AccountList from '../../components/AccountList.js';
+import AccountListItem from '../../components/AccountListItem.js';
 
 function setup() {
   const props = {
@@ -41,8 +42,16 @@ describe("components", () => {
 
     it("renders all accounts passed to it", () => {
       const { output, props } = setup();
-      console.log(output);
+
       expect(output.props.children.length).toBe(props.accounts.length);
+    });
+
+    it("renders accounts as AccountListItems", () => {
+      const { output, props } = setup();
+
+      output.props.children.forEach((item) => {
+        expect(item.type).toBe(AccountListItem);
+      });
     });
 
   });
