@@ -1,7 +1,7 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import AccountListItem from '../../components/AccountListItem.js';
+import AccountList from '../../components/AccountList.js';
 
 function setup() {
   const props = {
@@ -18,7 +18,7 @@ function setup() {
 }
 
 describe("components", () => {
-  describe("AccountListItem", () => {
+  describe("AccountList", () => {
     it("renders as a ul", () => {
       const { output } = setup();
 
