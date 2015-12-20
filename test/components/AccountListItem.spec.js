@@ -5,13 +5,15 @@ import AccountListItem from '../../components/AccountListItem.js';
 
 function setup() {
   const props = {
-    accountNumber: "123456789",
-    accountType: "Checking",
-    amount: 1000.00
+    account: {
+      accountNumber: "123456789",
+      accountType: "Checking",
+      amount: 1000.00
+    }
   };
 
   const renderer = TestUtils.createRenderer();
-  renderer.render(<AccountListItem {...props} />);
+  renderer.render(<AccountListItem account={props.account} />);
   const output = renderer.getRenderOutput();
 
   return {

@@ -54,5 +54,13 @@ describe("components", () => {
       });
     });
 
+    it("renders correct information for each item", () => {
+      const { output, props } = setup();
+
+      output.props.children.forEach((item, i) => {
+        expect(item.props.account).toBe(props.accounts[i]);
+      });
+    });
+
   });
 });
