@@ -4,6 +4,7 @@ export default (props) => {
   return (
     <li>
       <div>{props.accountNumber}</div>
+      <div>{props.accountType}</div>
     </li>
   );
 };
