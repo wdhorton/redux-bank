@@ -1,7 +1,12 @@
 import React from 'react';
+import AccountListItem from './AccountListItem';
 
-export default () => {
+export default (props) => {
   return (
-    <ul />
+    <ul>
+      {props.accounts.map((account) => {
+        return <AccountListItem {...account} />;
+      })}
+    </ul>
   );
 };

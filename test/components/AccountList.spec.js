@@ -25,8 +25,9 @@ function setup() {
   const output = renderer.getRenderOutput();
 
   return {
-    output: output,
-    renderer: renderer
+    props,
+    output,
+    renderer
   };
 }
 
@@ -40,6 +41,7 @@ describe("components", () => {
 
     it("renders all accounts passed to it", () => {
       const { output, props } = setup();
+      console.log(output);
       expect(output.props.children.length).toBe(props.accounts.length);
     });
 
