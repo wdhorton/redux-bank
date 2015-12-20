@@ -16,3 +16,13 @@ function setup() {
     renderer: renderer
   };
 }
+
+describe("components", () => {
+  describe("AccountListItem", () => {
+    it("renders as a ul", () => {
+      const { output } = setup();
+
+      expect(output.type).toBe('ul');
+    });
+  });
+});
