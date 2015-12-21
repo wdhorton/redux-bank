@@ -6,7 +6,7 @@ export default (props) => {
     <tr>
       <td>{type}</td>
       <td>{date}</td>
-      <td>{amount}</td>
+      <td>{"$" + amount}</td>
     </tr>
   );
 };

@@ -7,7 +7,7 @@ var path = require('path');
 var app = new express();
 var port = 3000;
 
-app.use(express.static(path.join(__dirname, 'semantic')));
+app.use(express.static('semantic/dist'));
 
 var compiler = webpack(config);
 app.use(webPackDevMiddleWare(compiler, { noInfo: true, publicPath: config.output.publicPath }));

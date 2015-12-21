@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default (props) => {
-  const { accountNumber, accountType, amount } = props.account;
+  const { id, accountNumber, accountType, amount } = props.account;
   return (
     <tr>
-      <td>{accountNumber}</td>
+      <td><Link to={"/accounts/" + id}>{accountNumber}</Link></td>
       <td>{accountType}</td>
-      <td>{amount}</td>
+      <td>{"$" + amount}</td>
     </tr>
   );
 };

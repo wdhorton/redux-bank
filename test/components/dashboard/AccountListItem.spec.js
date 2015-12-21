@@ -1,11 +1,13 @@
 import expect from 'expect';
 import React from 'react';
+import { Link } from 'react-router';
 import TestUtils from 'react-addons-test-utils';
 import AccountListItem from '../../../components/dashboard/AccountListItem.js';
 
 function setup() {
   const props = {
     account: {
+      id: 1,
       accountNumber: "123456789",
       accountType: "Checking",
       amount: 1000.00
@@ -31,12 +33,12 @@ describe("components", () => {
       expect(output.type).toBe('tr');
     });
 
-    it("displays the account number passed as props", () => {
+    it("displays a link to the account page", () => {
       const { output, props } = setup();
-      const td = output.props.children[0];
+      const link = output.props.children[0].props.children;
 
-      expect(td.type).toBe('td');
-      expect(td.props.children).toBe(props.accountNumber);
+      expect(link.type).toBe(Link);
+      expect(link.props.to).toBe("/accounts/" + props.id);
     });
 
     it("displays the account type", () => {
@@ -52,7 +54,7 @@ describe("components", () => {
       const td = output.props.children[2];
 
       expect(td.type).toBe('td');
-      expect(td.props.children).toBe(props.amount);
+      expect(td.props.children).toBe("$" + props.amount);
     });
 
   });

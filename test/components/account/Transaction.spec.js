@@ -52,7 +52,7 @@ describe("components", () => {
       const td = output.props.children[2];
 
       expect(td.type).toBe('td');
-      expect(td.props.children).toBe(props.amount);
+      expect(td.props.children).toBe("$" + props.amount);
     });
   });
 });
