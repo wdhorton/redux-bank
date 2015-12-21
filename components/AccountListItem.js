@@ -2,10 +2,10 @@ import React from 'react';
 
 export default (props) => {
   return (
-    <li>
-      <div>{props.accountNumber}</div>
-      <div>{props.accountType}</div>
-      <div>{props.amount}</div>
-    </li>
+    <tr>
+      <td>{props.accountNumber}</td>
+      <td>{props.accountType}</td>
+      <td>{props.amount}</td>
+    </tr>
   );
 };
