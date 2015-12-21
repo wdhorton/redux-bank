@@ -2,6 +2,7 @@ import React from 'react';
 import AccountListItem from './AccountListItem';
 
 export default (props) => {
+  const accounts = props.accounts || [];
   return (
     <table className="ui celled table">
       <thead>
@@ -12,7 +13,7 @@ export default (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.accounts.map((account, i) => {
+        {accounts.map((account, i) => {
           return <AccountListItem key={i} account={account} />;
         })}
       </tbody>

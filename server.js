@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'semantic')));
 var compiler = webpack(config);
 app.use(webPackDevMiddleWare(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 
-app.get("/", function(req, res) {
+app.get("*", function(req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 

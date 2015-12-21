@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <MainSection transactions={transactions} />
+        {this.props.children}
       </div>
     );
   }
