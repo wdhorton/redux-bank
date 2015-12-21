@@ -1,11 +1,11 @@
 import React from 'react';
-import AccountList from './AccountList';
+import AccountListContainer from '../../containers/AccountListContainer';
 
 export default (props) => {
   return (
     <section>
       <h2>Accounts</h2>
-      <AccountList accounts={props.accounts} />
+      <AccountListContainer />
     </section>
   );
 };

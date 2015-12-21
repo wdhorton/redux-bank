@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import MainSection from '../components/account/MainSection';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     const { transactions } = this.props;
     return (
@@ -14,15 +14,3 @@ class App extends Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    accounts: state.accounts,
-    transactions: state.transactions
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  () => { return {}; }
-)(App);

@@ -2,7 +2,7 @@ import React from 'react';
 import AccountListItem from './AccountListItem';
 
 export default (props) => {
-  const accounts = props.accounts || [];
+  const { accounts } = props;
   return (
     <table className="ui celled table">
       <thead>
