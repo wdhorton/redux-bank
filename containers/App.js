@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import MainSection from '../components/MainSection';
+import MainSection from '../components/account/MainSection';
 
-class Dashboard extends Component {
+class App extends Component {
   render() {
-    const { accounts } = this.props;
+    const { transactions } = this.props;
     return (
       <div>
         <Header />
-        <MainSection accounts={accounts} />
+        <MainSection transactions={transactions} />
       </div>
     );
   }
@@ -17,11 +17,12 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return {
-    accounts: state.accounts
+    accounts: state.accounts,
+    transactions: state.transactions
   };
 }
 
 export default connect(
   mapStateToProps,
   () => { return {}; }
-)(Dashboard);
+)(App);
