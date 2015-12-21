@@ -2,7 +2,7 @@ import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import MainSection from '../../../components/dashboard/MainSection.js';
-import AccountList from '../../../components/dashboard/AccountList.js';
+import AccountListContainer from '../../../containers/AccountListContainer.js';
 
 function setup() {
   const renderer = TestUtils.createRenderer();
@@ -32,11 +32,11 @@ describe("components", () => {
       expect(text).toBe('Accounts');
     });
 
-    it("renders an AccountList", () => {
+    it("renders an AccountListContainer", () => {
       const { output } = setup();
       const list = output.props.children[1];
 
-      expect(list.type).toBe(AccountList);
+      expect(list.type).toBe(AccountListContainer);
     });
   });
 });
