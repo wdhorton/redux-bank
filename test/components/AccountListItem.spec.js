@@ -25,34 +25,34 @@ function setup() {
 
 describe("components", () => {
   describe("AccountListItem", () => {
-    it("renders as an li", () => {
+    it("renders as a tr", () => {
       const { output } = setup();
 
-      expect(output.type).toBe('li');
+      expect(output.type).toBe('tr');
     });
 
     it("displays the account number passed as props", () => {
       const { output, props } = setup();
-      const div = output.props.children[0];
+      const td = output.props.children[0];
 
-      expect(div.type).toBe('div');
-      expect(div.props.children).toBe(props.accountNumber);
+      expect(td.type).toBe('td');
+      expect(td.props.children).toBe(props.accountNumber);
     });
 
     it("displays the account type", () => {
       const { output, props } = setup();
-      const div = output.props.children[1];
+      const td = output.props.children[1];
 
-      expect(div.type).toBe('div');
-      expect(div.props.children).toBe(props.accountType);
+      expect(td.type).toBe('td');
+      expect(td.props.children).toBe(props.accountType);
     });
 
     it("displays the account amount", () => {
       const { output, props } = setup();
-      const div = output.props.children[2];
+      const td = output.props.children[2];
 
-      expect(div.type).toBe('div');
-      expect(div.props.children).toBe(props.amount);
+      expect(td.type).toBe('td');
+      expect(td.props.children).toBe(props.amount);
     });
 
   });

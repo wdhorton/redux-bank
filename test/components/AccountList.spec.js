@@ -34,30 +34,40 @@ function setup() {
 
 describe("components", () => {
   describe("AccountList", () => {
-    it("renders as a ul", () => {
+    it("renders as a table", () => {
       const { output } = setup();
 
-      expect(output.type).toBe('ul');
+      expect(output.type).toBe('table');
+    });
+
+    it("renders a table header", () => {
+      const { output } = setup();
+      const thead = output.props.children[0];
+
+      expect(thead.type).toBe('thead');
     });
 
     it("renders all accounts passed to it", () => {
       const { output, props } = setup();
+      const items = output.props.children[1].props.children;
 
-      expect(output.props.children.length).toBe(props.accounts.length);
+      expect(items.length).toBe(props.accounts.length);
     });
 
     it("renders accounts as AccountListItems", () => {
       const { output, props } = setup();
+      const items = output.props.children[1].props.children;
 
-      output.props.children.forEach((item) => {
+      items.forEach((item) => {
         expect(item.type).toBe(AccountListItem);
       });
     });
 
     it("renders correct information for each item", () => {
       const { output, props } = setup();
+      const items = output.props.children[1].props.children;
 
-      output.props.children.forEach((item, i) => {
+      items.forEach((item, i) => {
         expect(item.props.account).toBe(props.accounts[i]);
       });
     });
