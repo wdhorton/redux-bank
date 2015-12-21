@@ -13,7 +13,7 @@ function setup() {
   };
 
   const renderer = TestUtils.createRenderer();
-  renderer.render(<AccountListItem account={props.account} />);
+  renderer.render(<AccountListItem account={props} />);
   const output = renderer.getRenderOutput();
 
   return {
