@@ -1,8 +1,8 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import MainSection from '../../components/MainSection.js';
-import AccountList from '../../components/AccountList.js';
+import MainSection from '../../../components/dashboard/MainSection.js';
+import AccountList from '../../../components/dashboard/AccountList.js';
 
 function setup() {
   const renderer = TestUtils.createRenderer();

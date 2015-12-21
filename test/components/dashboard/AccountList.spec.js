@@ -1,8 +1,8 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import AccountList from '../../components/AccountList.js';
-import AccountListItem from '../../components/AccountListItem.js';
+import AccountList from '../../../components/dashboard/AccountList.js';
+import AccountListItem from '../../../components/dashboard/AccountListItem.js';
 
 function setup() {
   const props = {
