@@ -2,7 +2,12 @@ import React from 'react';
 import Transaction from './Transaction';
 
 export default (props) => {
-  const transactions = props.transactions || [];
+  var transactions = props.transactions || [];
+
+  transactions = transactions.filter((transaction) => {
+    return transaction.accountId === Number(props.id);
+  });
+
   return(
     <table className="ui celled table">
       <thead>

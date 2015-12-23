@@ -10,13 +10,27 @@ function setup() {
       {
         type: "Deposit",
         date: "12/4/13",
-        amount: 100.00
+        amount: 100.00,
+        accountId: 1
+      },
+      {
+        type: "Deposit",
+        date: "12/5/13",
+        amount: 150.00,
+        accountId: 1
+      },
+      {
+        type: "Withdrawal",
+        date: "12/6/13",
+        amount: 155.00,
+        accountId: 2
       }
-    ]
+    ],
+    id: "1"
   };
 
   const renderer = TestUtils.createRenderer();
-  renderer.render(<TransactionTable transactions={props.transactions} />);
+  renderer.render(<TransactionTable {...props} />);
   const output = renderer.getRenderOutput();
 
   return {
@@ -41,11 +55,16 @@ describe("components", () => {
       expect(thead.type).toBe('thead');
     });
 
-    it("renders all transactions passed to it", () => {
+    it("renders transactions based on account id", () => {
       const { output, props } = setup();
+
       const items = output.props.children[1].props.children;
 
-      expect(items.length).toBe(props.transactions.length);
+      const transactionsById = props.transactions.filter((transaction) => {
+        return transaction.accountId === Number(props.id);
+      });
+
+      expect(items.length).toBe(transactionsById.length);
     });
 
     it("renders transactions as Transaction components", () => {

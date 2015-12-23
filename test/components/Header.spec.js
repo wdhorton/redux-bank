@@ -24,8 +24,12 @@ describe("components", () => {
 
     it("renders a 'Redux Bank' h1", () => {
       const { output } = setup();
-      const h1 = output.props.children;
-      const text = h1.props.children;
+
+      var text = output.props.children;
+
+      while (typeof text.props != "undefined") {
+        text = text.props.children;
+      }
 
       expect(text).toBe('Redux Bank');
     });

@@ -20,21 +20,21 @@ describe("components", () => {
     it("renders container", () => {
       const { output } = setup();
 
-      expect(output.type).toBe('section');
+      expect(output.type).toBe('main');
     });
 
     it ("renders an 'Accounts' header", () => {
       const { output } = setup();
-      const h2 = output.props.children[0];
-      const text = h2.props.children;
+      const h1 = output.props.children[0].props.children.props.children;
+      const text = h1.props.children;
 
-      expect(h2.type).toBe('h2');
+      expect(h1.type).toBe('h1');
       expect(text).toBe('Accounts');
     });
 
     it("renders an AccountListContainer", () => {
       const { output } = setup();
-      const list = output.props.children[1];
+      const list = output.props.children[1].props.children.props.children;
 
       expect(list.type).toBe(AccountListContainer);
     });

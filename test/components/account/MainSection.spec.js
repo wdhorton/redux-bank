@@ -5,11 +5,18 @@ import MainSection from '../../../components/account/MainSection.js';
 import TransactionTableContainer from '../../../containers/TransactionTableContainer.js';
 
 function setup() {
+  const props = {
+    params: {
+      id: "1"
+    }
+  };
+
   const renderer = TestUtils.createRenderer();
-  renderer.render(<MainSection />);
+  renderer.render(<MainSection {...props} />);
   const output = renderer.getRenderOutput();
 
   return {
+    props,
     output,
     renderer
   };
@@ -25,18 +32,28 @@ describe("components", () => {
 
     it ("renders a 'Transactions' header", () => {
       const { output } = setup();
-      const h2 = output.props.children[0];
-      const text = h2.props.children;
+      const row = output.props.children.props.children[0];
+      const h1 = row.props.children.props.children;
+      const text = h1.props.children;
 
-      expect(h2.type).toBe('h2');
+      expect(h1.type).toBe('h1');
       expect(text).toBe('Transactions');
     });
 
     it("renders a TransactionTableContainer", () => {
       const { output } = setup();
-      const list = output.props.children[1];
+      const tableRow = output.props.children.props.children[2];
+      const table = tableRow.props.children.props.children;
 
-      expect(list.type).toBe(TransactionTableContainer);
+      expect(table.type).toBe(TransactionTableContainer);
+    });
+
+    it("passes account id to TransactionTableContainer", () => {
+      const { output, props } = setup();
+      const tableRow = output.props.children.props.children[2];
+      const table = tableRow.props.children.props.children;
+
+      expect(table.props.id).toBe(props.params.id);
     });
   });
 });

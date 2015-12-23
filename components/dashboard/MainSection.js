@@ -3,9 +3,17 @@ import AccountListContainer from '../../containers/AccountListContainer';
 
 export default (props) => {
   return (
-    <section>
-      <h2>Accounts</h2>
-      <AccountListContainer />
-    </section>
+    <main className="ui page grid">
+      <div className="row">
+        <div className="center aligned starter column">
+          <h1 className="ui header">Accounts</h1>
+        </div>
+      </div>
+      <div className="row">
+        <div className="center aligned starter column">
+          <AccountListContainer />
+        </div>
+      </div>
+    </main>
   );
 };
