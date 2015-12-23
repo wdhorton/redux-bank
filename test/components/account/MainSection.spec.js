@@ -2,6 +2,7 @@ import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import MainSection from '../../../components/account/MainSection.js';
+import Buttons from '../../../components/account/Buttons.js';
 import TransactionTableContainer from '../../../containers/TransactionTableContainer.js';
 
 function setup() {
@@ -38,6 +39,14 @@ describe("components", () => {
 
       expect(h1.type).toBe('h1');
       expect(text).toBe('Transactions');
+    });
+
+    it ("renders Buttons", () => {
+      const { output } = setup();
+      const buttonsRow = output.props.children.props.children[1];
+      const buttons = buttonsRow.props.children.props.children;
+
+      expect(buttons.type).toBe(Buttons);
     });
 
     it("renders a TransactionTableContainer", () => {
