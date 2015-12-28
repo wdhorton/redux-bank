@@ -8,7 +8,7 @@ import { syncReduxAndRouter } from 'redux-simple-router';
 import rootReducer from './reducers';
 import App from './containers/App';
 import AccountsMainSection from './components/dashboard/MainSection';
-import TransactionsMainSection from './components/account/MainSection';
+import TransactionsMainSectionContainer from './containers/TransactionsMainSectionContainer';
 
 const reducer = rootReducer;
 
@@ -22,7 +22,7 @@ render(
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={AccountsMainSection} />
-        <Route path="accounts/:id" component={TransactionsMainSection} />
+        <Route path="accounts/:id" component={TransactionsMainSectionContainer} />
         <Route path="accounts" component={AccountsMainSection} />
       </Route>
     </Router>

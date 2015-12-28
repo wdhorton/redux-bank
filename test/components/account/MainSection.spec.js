@@ -1,14 +1,17 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import MainSection from '../../../components/account/MainSection.js';
-import Buttons from '../../../components/account/Buttons.js';
-import TransactionTableContainer from '../../../containers/TransactionTableContainer.js';
+import MainSection from '../../../components/account/MainSection';
+import Buttons from '../../../components/account/Buttons';
+import TransactionTable from '../../../components/account/TransactionTable';
 
 function setup() {
   const props = {
     params: {
       id: "1"
+    },
+    actions: {
+      addTransaction: expect.createSpy()
     }
   };
 
@@ -54,7 +57,7 @@ describe("components", () => {
       const tableRow = output.props.children.props.children[2];
       const table = tableRow.props.children.props.children;
 
-      expect(table.type).toBe(TransactionTableContainer);
+      expect(table.type).toBe(TransactionTable);
     });
 
     it("passes account id to TransactionTableContainer", () => {

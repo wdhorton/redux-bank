@@ -1,11 +1,19 @@
 import React from 'react';
 
-export default () => {
+export default (props) => {
   return(
     <div className="ui buttons">
-      <button className="ui red button">Withdraw funds</button>
+      <button
+        className="ui red button"
+        onClick={props.showTransactionModal}>
+        Withdraw funds
+      </button>
       <div className="or"></div>
-      <button className="ui green button">Make a deposit</button>
+      <button
+        className="ui green button"
+        onClick={props.showTransactionModal}>
+        Make a deposit
+      </button>
     </div>
   );
 };

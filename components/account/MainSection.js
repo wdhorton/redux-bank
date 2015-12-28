@@ -1,6 +1,6 @@
 import React from 'react';
 import Buttons from './Buttons';
-import TransactionTableContainer from '../../containers/TransactionTableContainer';
+import TransactionTable from './TransactionTable';
 
 export default (props) => {
   return (
@@ -13,12 +13,14 @@ export default (props) => {
         </div>
         <div className="row">
           <div className="center aligned starter column">
-            <Buttons />
+            <Buttons showTransactionModal={props.actions.showTransactionModal} />
           </div>
         </div>
         <div className="row">
           <div className="center aligned starter column">
-            <TransactionTableContainer id={props.params.id} />
+            <TransactionTable
+              transaction={props.transactions}
+              id={props.params.id} />
           </div>
         </div>
       </main>
