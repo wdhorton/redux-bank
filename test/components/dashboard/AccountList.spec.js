@@ -8,16 +8,23 @@ function setup() {
   const props = {
     accounts: [
       {
+        id: 1,
         accountNumber: "444444",
-        accountType: "Checking",
-        amount: 100.00
+        accountType: "Checking"
       },
       {
+        id: 2,
         accountNumber: "555555",
-        accountType: "Savings",
-        amount: 350.00
+        accountType: "Savings"
       },
-
+    ],
+    transactions: [
+      {
+        type: "Withdrawal",
+        date: new Date("12/13/14"),
+        amount: 250.00,
+        accountId: 1
+      },
     ]
   };
 
@@ -68,7 +75,7 @@ describe("components", () => {
       const items = output.props.children[1].props.children;
 
       items.forEach((item, i) => {
-        expect(item.props.account).toBe(props.accounts[i]);
+        expect(item.props.account).toEqual({...props.accounts[i], amount: i === 0 ? 250 : 0 });
       });
     });
 

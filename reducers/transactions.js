@@ -27,7 +27,7 @@ export default function transactions(state = initialState, action) {
       const newTransaction = {
         type: action.transactionType,
         date: new Date(),
-        amount: action.amount,
+        amount: parseInt(action.amount),
         accountId: parseInt(action.accountId)
       };
       return [...state, newTransaction];

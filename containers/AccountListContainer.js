@@ -4,7 +4,8 @@ import AccountList from '../components/dashboard/AccountList';
 
 const mapStateToProps = (state) => {
   return {
-    accounts: state.accounts
+    accounts: state.accounts,
+    transactions: state.transactions
   };
 };
 
