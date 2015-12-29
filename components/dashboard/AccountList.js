@@ -9,7 +9,9 @@ export default class AccountList extends Component {
       return transaction.accountId === account.id;
     });
 
-    return accountTransactions.reduce((acc, t) => { return acc + t.amount; }, 0);
+    return accountTransactions.reduce((acc, t) => {
+      return (t.type === "Deposit" ? acc + t.amount : acc - t.amount); 
+    }, 0);
   }
 
   render() {

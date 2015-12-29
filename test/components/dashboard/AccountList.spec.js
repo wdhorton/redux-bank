@@ -75,7 +75,7 @@ describe("components", () => {
       const items = output.props.children[1].props.children;
 
       items.forEach((item, i) => {
-        expect(item.props.account).toEqual({...props.accounts[i], amount: i === 0 ? 250 : 0 });
+        expect(item.props.account).toEqual({...props.accounts[i], amount: i === 0 ? -250 : 0 });
       });
     });
 
