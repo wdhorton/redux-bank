@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 
-function TransactionForm(props) {
+export function TransactionForm(props) {
   const { fields: { amount }, handleSubmit, hideTransactionModal } = props;
 
   return (

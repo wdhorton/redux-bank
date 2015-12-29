@@ -1,7 +1,8 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import TransactionModal from '../../../components/account/TransactionModal';
+import { TransactionModal } from '../../../components/account/TransactionModal';
+import TransactionForm from '../../../components/account/TransactionForm';
 
 function setup() {
   const props = {
@@ -27,15 +28,6 @@ describe("components", () => {
 
       expect(output.type).toBe('div');
       expect(header.props.children).toBe('Withdrawal');
-    });
-
-    it("calls hideTransactionModal when Cancel button is clicked", () => {
-      const { output, props } = setup();
-      const cancelButton = output.props.children[2].props.children[0];
-
-      cancelButton.props.onClick();
-
-      expect(props.hideTransactionModal).toHaveBeenCalled();
     });
   });
 });

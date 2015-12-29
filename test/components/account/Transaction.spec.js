@@ -13,7 +13,7 @@ function setup() {
   };
 
   const renderer = TestUtils.createRenderer();
-  renderer.render(<Transaction transaction={props} />);
+  renderer.render(<Transaction {...props} />);
   const output = renderer.getRenderOutput();
 
   return {
@@ -36,7 +36,7 @@ describe("components", () => {
       const td = output.props.children[0];
 
       expect(td.type).toBe('td');
-      expect(td.props.children).toBe(props.type);
+      expect(td.props.children).toBe(props.transaction.type);
     });
 
     it("displays the account type", () => {
@@ -44,7 +44,7 @@ describe("components", () => {
       const td = output.props.children[1];
 
       expect(td.type).toBe('td');
-      expect(td.props.children).toBe(props.date);
+      expect(td.props.children).toBe("11/25/2014");
     });
 
     it("displays the account amount", () => {
@@ -52,7 +52,7 @@ describe("components", () => {
       const td = output.props.children[2];
 
       expect(td.type).toBe('td');
-      expect(td.props.children).toBe("$" + props.amount);
+      expect(td.props.children).toBe("$" + props.transaction.amount);
     });
   });
 });

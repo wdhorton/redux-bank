@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { initialize } from 'redux-form';
 import TransactionForm from './TransactionForm';
 
-class TransactionModal extends Component {
+export class TransactionModal extends Component {
   handleSubmit(data) {
     this.props.addTransaction("Withdrawal", data.amount, this.props.accountId);
     this.props.hideTransactionModal();
