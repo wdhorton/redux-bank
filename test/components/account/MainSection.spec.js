@@ -4,6 +4,7 @@ import TestUtils from 'react-addons-test-utils';
 import MainSection from '../../../components/account/MainSection';
 import Buttons from '../../../components/account/Buttons';
 import TransactionTable from '../../../components/account/TransactionTable';
+import TransactionModal from '../../../components/account/TransactionModal';
 
 function setup() {
   const props = {
@@ -12,7 +13,9 @@ function setup() {
     },
     actions: {
       addTransaction: expect.createSpy()
-    }
+    },
+    transactions: [],
+    showTransactionModal: false
   };
 
   const renderer = TestUtils.createRenderer();
@@ -36,7 +39,7 @@ describe("components", () => {
 
     it ("renders a 'Transactions' header", () => {
       const { output } = setup();
-      const row = output.props.children.props.children[0];
+      const row = output.props.children[1].props.children[0];
       const h1 = row.props.children.props.children;
       const text = h1.props.children;
 
@@ -46,7 +49,7 @@ describe("components", () => {
 
     it ("renders Buttons", () => {
       const { output } = setup();
-      const buttonsRow = output.props.children.props.children[1];
+      const buttonsRow = output.props.children[1].props.children[1];
       const buttons = buttonsRow.props.children.props.children;
 
       expect(buttons.type).toBe(Buttons);
@@ -54,7 +57,7 @@ describe("components", () => {
 
     it("renders a TransactionTableContainer", () => {
       const { output } = setup();
-      const tableRow = output.props.children.props.children[2];
+      const tableRow = output.props.children[1].props.children[2];
       const table = tableRow.props.children.props.children;
 
       expect(table.type).toBe(TransactionTable);
@@ -62,10 +65,27 @@ describe("components", () => {
 
     it("passes account id to TransactionTableContainer", () => {
       const { output, props } = setup();
-      const tableRow = output.props.children.props.children[2];
+      const tableRow = output.props.children[1].props.children[2];
       const table = tableRow.props.children.props.children;
 
       expect(table.props.id).toBe(props.params.id);
     });
+
+    it("doesn't render TransactionModal when showTransactionModal is false", () => {
+      const { output } = setup();
+
+      expect(typeof output.props.children[0]).toBe("undefined");
+    });
+
+    it("renders a TransactionModal when showTransactionModal is true", () => {
+      const { props, renderer } = setup();
+      props.showTransactionModal = true;
+
+      renderer.render(<MainSection {...props} />);
+      const output = renderer.getRenderOutput();
+
+      expect(output.props.children[0].type).toBe(TransactionModal);
+    });
+
   });
 });

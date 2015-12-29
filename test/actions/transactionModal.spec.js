@@ -8,4 +8,10 @@ describe('transactionModal actions', () => {
       type: types.SHOW_TRANSACTION_MODAL
     });
   });
+
+  it('hideTransactionModal should create HIDE_TRANSACTION_MODAL action', () => {
+    expect(actions.hideTransactionModal()).toEqual({
+      type: types.HIDE_TRANSACTION_MODAL
+    });
+  });
 });

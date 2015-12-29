@@ -7,7 +7,7 @@ function setup() {
   const props = {
     transaction: {
       type: "Withdrawal",
-      date: "11/25/2014",
+      date: new Date("11/25/2014"),
       amount: 100.00
     }
   };

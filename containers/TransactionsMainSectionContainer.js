@@ -1,17 +1,20 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import MainSection from '../components/account/MainSection';
+import * as TransactionModalActions from '../actions/transactionModal';
 import * as TransactionActions from '../actions/transactions';
 
 const mapStateToProps = (state) => {
   return {
-    transactions: state.transactions
+    transactions: state.transactions,
+    showTransactionModal: state.showTransactionModal
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(TransactionActions, dispatch)
+    actions: bindActionCreators({...TransactionModalActions, ...TransactionActions}, dispatch)
   };
 };
 

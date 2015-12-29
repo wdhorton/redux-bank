@@ -1,10 +1,23 @@
 import React from 'react';
 import Buttons from './Buttons';
 import TransactionTable from './TransactionTable';
+import TransactionModal from './TransactionModal';
 
 export default (props) => {
+  var modal;
+
+  if (props.showTransactionModal) {
+    modal = (
+      <TransactionModal
+        hideTransactionModal={props.actions.hideTransactionModal}
+        addTransaction={props.actions.addTransaction}
+        accountId={props.params.id}/>
+    );
+  }
+
   return (
     <section>
+      { modal }
       <main className="ui page grid">
         <div className="row">
           <div className="center aligned starter column">
@@ -19,7 +32,7 @@ export default (props) => {
         <div className="row">
           <div className="center aligned starter column">
             <TransactionTable
-              transaction={props.transactions}
+              transactions={props.transactions}
               id={props.params.id} />
           </div>
         </div>
