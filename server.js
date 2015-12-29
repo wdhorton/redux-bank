@@ -1,25 +1,30 @@
-var webpack = require('webpack');
-var webPackDevMiddleWare = require('webpack-dev-middleware');
-var config = require('./webpack.config');
 var express = require('express');
 var path = require('path');
+var webpack = require('webpack');
+var app = express();
 
-var app = new express();
-var port = 3000;
+var isDevelopment = (process.env.NODE_ENV !== 'production');
+var static_path = path.join(__dirname, 'dist');
 
-app.use(express.static('semantic/dist'));
+app.use(express.static(static_path))
+  .get('*', function (req, res) {
+    res.sendFile('index.html', {
+      root: static_path
+    });
+  }).listen(process.env.PORT || 8080, function (err) {
+    if (err) { console.log(err) };
+    console.log('Listening at localhost:8080');
+  });
 
-var compiler = webpack(config);
-app.use(webPackDevMiddleWare(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+if (isDevelopment) {
+  var config = require('./webpack.config');
+  var WebpackDevServer = require('webpack-dev-server');
 
-app.get("*", function(req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
-
-app.listen(port, function(error) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.info("Listening on port " + port);
-  }
-});
+  new WebpackDevServer(webpack(config), {
+    publicPath: config.output.publicPath,
+    hot: true
+  }).listen(3000, 'localhost', function (err, result) {
+    if (err) { console.log(err) }
+    console.log('Listening at localhost:3000');
+  });
+}
