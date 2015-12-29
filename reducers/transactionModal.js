@@ -1,11 +1,11 @@
 import { SHOW_TRANSACTION_MODAL, HIDE_TRANSACTION_MODAL } from '../constants/ActionTypes';
 
-export default function showTransactionModal(state = false, action) {
+export default function transactionModal(state = [], action) {
   switch (action.type) {
     case SHOW_TRANSACTION_MODAL:
-      return true;
+      return [action.modal];
     case HIDE_TRANSACTION_MODAL:
-      return false;
+      return [];
     default:
       return state;
   }

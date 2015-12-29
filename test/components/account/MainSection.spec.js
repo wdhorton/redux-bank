@@ -15,7 +15,7 @@ function setup() {
       addTransaction: expect.createSpy()
     },
     transactions: [],
-    showTransactionModal: false
+    showTransactionModal: []
   };
 
   const renderer = TestUtils.createRenderer();
@@ -79,7 +79,7 @@ describe("components", () => {
 
     it("renders a TransactionModal when showTransactionModal is true", () => {
       const { props, renderer } = setup();
-      props.showTransactionModal = true;
+      props.showTransactionModal = ["Withdrawal"];
 
       renderer.render(<MainSection {...props} />);
       const output = renderer.getRenderOutput();
