@@ -8,7 +8,7 @@ import * as TransactionActions from '../actions/transactions';
 const mapStateToProps = (state) => {
   return {
     transactions: state.transactions,
-    showTransactionModal: state.showTransactionModal
+    transactionModal: state.transactionModal
   };
 };
 

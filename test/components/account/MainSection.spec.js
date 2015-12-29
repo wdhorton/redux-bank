@@ -15,7 +15,7 @@ function setup() {
       addTransaction: expect.createSpy()
     },
     transactions: [],
-    showTransactionModal: []
+    transactionModal: []
   };
 
   const renderer = TestUtils.createRenderer();
@@ -79,12 +79,21 @@ describe("components", () => {
 
     it("renders a TransactionModal when showTransactionModal is true", () => {
       const { props, renderer } = setup();
-      props.showTransactionModal = ["Withdrawal"];
-
+      props.transactionModal = ["Withdrawal"];
       renderer.render(<MainSection {...props} />);
       const output = renderer.getRenderOutput();
 
       expect(output.props.children[0].type).toBe(TransactionModal);
+    });
+
+    it("passes correct modalType to TransactionModal", () => {
+      const { props, renderer } = setup();
+      props.transactionModal = ["Deposit"];
+      renderer.render(<MainSection {...props} />);
+      const output = renderer.getRenderOutput();
+      const modal = output.props.children[0];
+
+      expect(modal.props.modalType).toBe("Deposit");
     });
 
   });

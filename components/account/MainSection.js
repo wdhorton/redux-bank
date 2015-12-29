@@ -4,15 +4,19 @@ import TransactionTable from './TransactionTable';
 import TransactionModal from './TransactionModal';
 
 export default (props) => {
-  const { actions, params, showTransactionModal } = props;
+  const { actions, params, transactionModal } = props;
   var modal;
 
-  if (showTransactionModal.length > 0) {
+  if (transactionModal.length > 0) {
     modal = (
       <TransactionModal
         hideTransactionModal={actions.hideTransactionModal}
-        addTransaction={actions.addTransaction.bind(this, showTransactionModal)}
-        accountId={params.id}/>
+        addTransaction={actions.addTransaction.bind(
+          null,
+          transactionModal[0],
+          parseInt(params.id)
+        )}
+        modalType={transactionModal[0]} />
     );
   }
 
