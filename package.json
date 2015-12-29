@@ -1,8 +1,11 @@
 {
   "name": "redux-bank",
   "description": "A banking app with React/Redux",
+  "author": "William Horton",
+  "license": "MIT",
   "scripts": {
     "start": "node server.js",
+    "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js",
     "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register",
     "test:watch": "npm test -- --watch"
   },
@@ -32,5 +35,8 @@
     "react-addons-test-utils": "^0.14.0",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.4.0"
+  },
+  "engines": {
+    "node": "5.1.0"
   }
 }
