@@ -6,7 +6,7 @@ import Transaction from '../../../components/account/Transaction';
 function setup() {
   const props = {
     transaction: {
-      type: "Withdrawal",
+      type: "Deposit",
       date: new Date("11/25/2014"),
       amount: 100.00
     }
@@ -53,6 +53,17 @@ describe("components", () => {
 
       expect(td.type).toBe('td');
       expect(td.props.children).toBe("$" + props.transaction.amount);
+    });
+
+    it("displays negative amount for Withdrawal", () => {
+      const { renderer, props } = setup();
+      props.transaction.type = "Withdrawal";
+      renderer.render(<Transaction {...props} />);
+      const output = renderer.getRenderOutput();
+      const td = output.props.children[2];
+
+      expect(td.type).toBe('td');
+      expect(td.props.children).toBe("-$" + props.transaction.amount);
     });
   });
 });
