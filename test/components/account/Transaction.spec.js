@@ -31,7 +31,7 @@ describe("components", () => {
       expect(output.type).toBe('tr');
     });
 
-    it("displays the account number passed as props", () => {
+    it("displays the transaction type passed as props", () => {
       const { output, props } = setup();
       const td = output.props.children[0];
 
@@ -39,7 +39,7 @@ describe("components", () => {
       expect(td.props.children).toBe(props.transaction.type);
     });
 
-    it("displays the account type", () => {
+    it("displays the transaction date", () => {
       const { output, props } = setup();
       const td = output.props.children[1];
 
@@ -47,7 +47,7 @@ describe("components", () => {
       expect(td.props.children).toBe("11/25/2014");
     });
 
-    it("displays the account amount", () => {
+    it("displays the transaction amount", () => {
       const { output, props } = setup();
       const td = output.props.children[2];
 
